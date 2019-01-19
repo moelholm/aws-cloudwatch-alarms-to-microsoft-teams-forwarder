@@ -1,0 +1,15 @@
+{
+  "name": "aws-cloudwatch-alarms-to-microsoft-teams-forwarder",
+  "version": "1.0.0",
+  "description": "AWS CloudWatch Alarms To Microsoft Teams Forwarder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "request": "^2.88.0",
+    "tableify": "^1.1.0"
+  }
+}

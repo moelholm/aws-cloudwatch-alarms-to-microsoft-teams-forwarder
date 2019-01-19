@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: AWS CloudWatch Alarms To Microsoft Teams Forwarder
+
+Resources:
+  AwsCloudWatchAlarmsToMsTeamsForwarder:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      Policies: AWSLambdaExecute
+      Timeout: 300
+      Environment:
+        Variables:
+          TEAMS_WEB_HOOK_URL:  https://outlook.office.com/webhook/.....YOUR TEAM+CHANNEL IDS HERE

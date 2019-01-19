@@ -1,0 +1,19 @@
+{
+    "Records": [
+        {
+            "Sns": {
+                "Type": "Notification",
+                "MessageId": "1ea1980b-35c8-47a6-b125-4eb58540a268",
+                "TopicArn": "arn:aws:sns:eu-west-1: 391506916231:my-cloudwatch-alarms-topic",
+                "Subject": "ALARM: \"my-cloudwatch-alarm\" in EU (Ireland)",
+                "Message": "{\"AlarmName\": \"my-cloudwatch-alarm\"}",
+                "Timestamp": "2017-01-13T07:51:53.203Z",
+                "SignatureVersion": "1",
+                "Signature": "n4YUQAHd/..zzzyy",
+                "SigningCertUrl": "https: //sns.eu-west-1.amazonaws.com/SimpleNotificationService-xxx.pem",
+                "UnsubscribeUrl": "https: //sns.eu-west-1.amazonaws.com/?Action=Unsubscribe&Subscriptzzyy",
+                "MessageAttributes": {}
+            }
+        }
+    ]
+}

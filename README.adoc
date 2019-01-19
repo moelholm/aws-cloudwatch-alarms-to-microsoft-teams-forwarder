@@ -1,0 +1,61 @@
+= AWS CloudWatch Alarms To Microsoft Teams Forwarder
+
+This project contains an AWS Lambda function (ES6) that posts messages to a Microsoft Teams Webhook. With it, a team can receive AWS CloudWatch Alarms in a Microsoft Teams channel.
+Alarm data is preserved as is, but formatted in an HTML table
+
+The function is designed to be attached as a subscriber to one or more SNS topics, which again is notified from CloudWatch Alarms.
+
+This readme contains the following sections:
+
+- <<DevGuide,Development guide>>: how to build and run this application
+- <<DepGuide,Deployment guide>>: how to install on AWS
+
+All commands below assume a POSIX compliant shell.
+
+[[DevGuide]]
+== Development guide
+
+Firstly:
+
+    npm install
+
+Then, with AWS SAM CLI 🐿, post a message to your Microsoft Teams channel like this:
+
+    cat sample-event.json | sam local invoke AwsCloudWatchAlarmsToMsTeamsForwarder
+
+File `sample-event.json` contains a dummy CloudWatch Alert event. The lambda function forwards this alert to the Microsoft Teams channel specified by the Webhook URL in `template.yaml`.
+
+[[DepGuide]]
+== Deployment guide
+
+The following steps describe how to install the lambda on AWS. You will need npm, aws cli and sam cli before you proceed. Also, from your terminal, ensure that you have configured proper AWS credentials.
+
+=== Build the lambda project
+
+    npm install
+
+=== Create the lambda S3 bucket
+
+    aws s3 mb s3://BUCKET_NAME
+
+Where `BUCKET_NAME` is the name of the bucket you want to use for storing the packaged lambda function.
+
+=== Build the lambda package
+
+    sam package --template-file template.yaml --s3-bucket BUCKET_NAME --output-template-file packaged.yaml
+
+=== Deploy the lambda package
+
+    sam deploy --template-file ./packaged.yaml --stack-name LAMBDA_STACK_NAME --capabilities CAPABILITY_IAM
+
+where `LAMBDA_STACK_NAME` is the AWS CloudFormation script name that you want to use.
+
+=== Manual step - Configure the lambda function (one time operation)
+
+From the AWS console, open the settings for your lambda function. 
+
+Update environment variable `TEAMS_WEB_HOOK_URL` to point to the relevant Microsoft Teams Webhook.
+
+=== Manual step - attach to SNS topic (one time operation)
+
+Attach the lambda function as an SNS subscriber to the SNS topic associated with your CloudWatch alarms.
