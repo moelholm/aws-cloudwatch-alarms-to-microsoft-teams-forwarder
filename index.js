@@ -23,7 +23,7 @@ exports.handler = (event, context, callback) => {
 
   // Abort if we didn't receive proper SNS records
   if (snsRecordStrings.length === 0) {
-    const errorMessage = 'Skipping event because it does not contain any SNS records';
+    const errorMessage = 'Ignoring event because it does not contain any SNS records';
     console.log(`[ERROR] ${errorMessage}`);
     callback(errorMessage);
     return;
