@@ -50,12 +50,12 @@ Where `BUCKET_NAME` is the name of the bucket you want to use for storing the pa
 
 where `LAMBDA_STACK_NAME` is the AWS CloudFormation script name that you want to use.
 
-=== Manual step - Configure the lambda function (one time operation)
+=== Manual step - Configure the lambda function
 
 From the AWS console, open the settings for your lambda function. 
 
 Update environment variable `TEAMS_WEB_HOOK_URL` to point to the relevant Microsoft Teams Webhook.
 
-=== Manual step - attach to SNS topic (one time operation)
+=== Manual step - attach to SNS topic
 
 Attach the lambda function as an SNS subscriber to the SNS topic associated with your CloudWatch alarms.
