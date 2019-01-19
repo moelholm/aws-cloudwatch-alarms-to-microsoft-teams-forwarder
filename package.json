@@ -11,5 +11,10 @@
   "dependencies": {
     "request": "^2.88.0",
     "tableify": "^1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
   }
 }
